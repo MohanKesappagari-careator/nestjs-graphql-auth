@@ -1,0 +1,54 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type User {
+  id: String!
+  username: String!
+  email: String!
+  password: String!
+  phonenumber: String!
+  avatar: String!
+  role: Role!
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+type Query {
+  alluser: [User!]!
+  user(id: String!): User!
+}
+
+type Mutation {
+  createUser(createUserInput: CreateUserInput!): User!
+  updateUser(updateUserInput: UpdateUserInput!): User!
+  removeUser(id: String!): User!
+  login(login: LoginInput!): String!
+}
+
+input CreateUserInput {
+  username: String!
+  email: String!
+  password: String!
+  phonenumber: String!
+  avatar: String = "https://www.pngfind.com/pngs/m/676-6764065_default-profile-picture-transparent-hd-png-download.png"
+  role: Role = USER
+}
+
+input UpdateUserInput {
+  username: String
+  email: String
+  password: String
+  phonenumber: String
+  avatar: String = "https://www.pngfind.com/pngs/m/676-6764065_default-profile-picture-transparent-hd-png-download.png"
+  role: Role = USER
+  id: String!
+}
+
+input LoginInput {
+  email: String!
+  password: String!
+}
